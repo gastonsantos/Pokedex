@@ -1,10 +1,8 @@
 <?php
+include_once "./data/PokemonDAO.php";
+$dao = new PokemonDAO();
 
-$sql="SELECT * FROM Pokemons";
-
-$pokemones = $con->query($sql);
-
-
+$pokemones = $dao->getAll();
 
 foreach ( $pokemones as $pokemon){
     echo   "<tr>
@@ -14,14 +12,12 @@ foreach ( $pokemones as $pokemon){
                                 <td class='text-center'>" . $pokemon['peso'] . "</td>
                                 <td class='text-center'>" . $pokemon['habilidad'] . "</td>
                                 <td class='text-center'><img src='".$pokemon['tipo']."' width='50' height='50'>";
-                                
+
                                  echo"</td>";
                                  echo "<td>" . $pokemon['descripcion'] . "</td>
                                 <td> <img src=" . $pokemon['imagen'] . " width=75 height=75 ></td>
                                    
              </tr>";
 }
-
-
 
 ?>
