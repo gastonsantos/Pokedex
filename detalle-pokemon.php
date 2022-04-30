@@ -39,7 +39,9 @@ if (!$pokemon) Navigation::redirectTo("index.php");
             </div>
 
             <?php
-            if (isset($_SESSION["nombre"])) {
+            session_start();
+
+            if (!isset($_SESSION["nombre"])) {
                 echo '<div class="col-md-6 pt-2">
                             <form class="d-flex mx-5 col-4" action="sesion.php" method="post">
                                 <input type="text" name="nombre" class="form-control mx-2 col-1" placeholder="usuario">
