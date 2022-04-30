@@ -9,7 +9,7 @@ class PokemonDAO {
     }
 
     public function getAll() {
-        $query = $this->connection->prepare("SELECT * FROM pokebase.pokemon");
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons");
         $query->execute();
 
         $result = $query->get_result();
@@ -17,14 +17,18 @@ class PokemonDAO {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getById($id) {
-        $query = $this->connection->prepare("SELECT * FROM pokebase.pokemon WHERE id = ?");
-        $query->bind_param("i", $id);
+    public function getByName($name) {
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE nombre = ?");
+        $query->bind_param("s", $name);
         $query->execute();
 
         $result = $query->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
+
+    public function update($id) {}
+
+    public function delete($id) {}
 
 }

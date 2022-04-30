@@ -1,10 +1,8 @@
 <?php
+include_once "./data/PokemonDAO.php";
+$dao = new PokemonDAO();
 
-$sql="SELECT * FROM Pokemons";
-
-$pokemones = $con->query($sql);
-
-
+$pokemones = $dao->getAll();
 
 foreach ( $pokemones as $pokemon){
     echo   "<tr>
