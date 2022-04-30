@@ -38,13 +38,19 @@ if (!$pokemon) Navigation::redirectTo("index.php");
                 <h1 class="text-center">POKEDEX</h1>
             </div>
 
-            <div class="col-md-6 pt-2">
-                <form class="d-flex mx-5 col-4" action="sesion.php" method="post">
-                    <input type="text" name="nombre" class="form-control mx-2 col-1" placeholder="usuario">
-                    <input type="password" name="password" class="form-control mx-2 col-1" placeholder="contraseña">
-                    <button button type="submit" class="btn btn-primary col-6">Ingresar</button>
-                </form>
-            </div>
+            <?php
+            session_start();
+
+            if (!isset($_SESSION["nombre"])) {
+                echo '<div class="col-md-6 pt-2">
+                            <form class="d-flex mx-5 col-4" action="sesion.php" method="post">
+                                <input type="text" name="nombre" class="form-control mx-2 col-1" placeholder="usuario">
+                                <input type="password" name="password" class="form-control mx-2 col-1" placeholder="contraseña">
+                                <button type="submit" class="btn btn-primary col-6">Ingresar</button>
+                            </form>
+                    </div>';
+            }
+            ?>
         </div>
     </div>
 </header>
