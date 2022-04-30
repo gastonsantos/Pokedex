@@ -1,5 +1,6 @@
 <?php
 include_once "DatabaseManager.php";
+include_once(dirname(__DIR__) . "/utils/Navigation.php");
 
 class UsuarioDAO {
     private $connection;
@@ -15,18 +16,15 @@ class UsuarioDAO {
 
         $result = $query->get_result();
 
-        if ($result->num_rows > 0){
+        if ($result->num_rows > 0) {
             $fila = $result->fetch_assoc();
 
             $_SESSION["nombre"] = $fila["nombre"];
 
-            header("location:pagina-con-sesion.php");
-            exit();
-        } else{
-            header("location:index.php");
-            exit();
+            Navigation::redirectTo("pagina-con-sesion.php");
         }
 
+        Navigation::redirectTo("index.php");
     }
 
 }
