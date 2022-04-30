@@ -2,10 +2,8 @@
 session_start();
 include('conexion.php');
 
-
-if(isset($_SESSION["nombre"])){//Si la variable esta definida 
-
-    header("location:pagina-con-sesion.php");
+if(!isset($_SESSION["nombre"])){ //si no esta definida la variable usuario
+    header("location:index.php");
     exit();
 }
 ?>
@@ -29,18 +27,12 @@ if(isset($_SESSION["nombre"])){//Si la variable esta definida
             </div>
 
             <div class="col-md-3">
-                <h1 class="text-center">POKEDEXS</h1>
+                <btn><a href="cerrar-sesion.php" class="btn btn-primary">Cerrar Sesion</a></btn>
+                <h3 class="text-center">ADMIN: <?php  echo $_SESSION["nombre"];   ?></h3>
             </div>
 
-            <div class="col-md-6 pt-2">
-                <form class="d-flex mx-5 col-4" action="sesion.php" method="post">
-                    <input type="text" name="nombre"  class="form-control mx-2 col-1" placeholder="usuario">
-                    <input type="password" name="password" class="form-control mx-2 col-1" placeholder="contraseña">
-                    <button button type="submit" class="btn btn-primary col-6">Ingresar</button>
-                </form>
-            </div>
-        </div>
-    </div>
+       
+
 </header>
 
 
@@ -66,8 +58,8 @@ if(isset($_SESSION["nombre"])){//Si la variable esta definida
             $sql="SELECT * FROM Pokemons";
         
 
-            include('lista-pokemones.php');
-            //include('lista-pokemones-con-sesion.php');
+            //include('lista-pokemones.php');
+            include('lista-pokemones-con-sesion.php');
 
         ?>
         <tr>
