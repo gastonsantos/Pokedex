@@ -27,7 +27,26 @@ class PokemonDAO {
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function update($id) {}
+    public function searchById($id){
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE id = ?");
+        $query->bind_param("i", $id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    public function update($id,$id_manual,$nombre,$altura,$peso,$habilidad) {
+
+        $query = $this->connection->prepare("UPDATE pokedex.pokemons SET id_manual = ? ,nombre = ?, altura = ?, peso = ?, habilidad = ? WHERE id = ?");
+        $query->bind_param("issssi", $id_manual,$nombre,$altura,$peso,$habilidad,$id);
+
+        $query->execute();
+
+        $result = $query->get_result();
+
+    }
 
     public function delete($id) {}
 

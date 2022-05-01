@@ -26,7 +26,7 @@ foreach ( $pokemones as $pokemon){
                                                 </form>
                                           </div>
                                           <div class =''>
-                                                <form action='' method='get'>
+                                                <form action='modificar.php' method='get'>
                                                 <input type='hidden' name='id' value=".$pokemon['id'].">
                                                 <input class='btn btn-warning ms-auto w-100' type='submit' value='Modificar'>
                                                 </form>
