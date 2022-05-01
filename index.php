@@ -1,10 +1,7 @@
 <?php
 session_start();
-include('conexion.php');
 
-
-if(isset($_SESSION["nombre"])){//Si la variable esta definida 
-
+if(isset($_SESSION["nombre"])){//Si la variable esta definida
     header("location:pagina-con-sesion.php");
     exit();
 }
@@ -43,8 +40,14 @@ if(isset($_SESSION["nombre"])){//Si la variable esta definida
     </div>
 </header>
 
+<main>
 
-<table class="table container">
+    <form class="container d-flex my-2" method="post" action="detalle-pokemon.php">
+        <input class="col-8" placeholder="Ingrese el nombre del pokemon" name="nombre">
+        <button class="btn btn-danger col-4">Quien es este pokemon?</button>
+    </form>
+
+    <table class="table container">
         <thead class="text-center">
         <tr>
             <th scope="col">Nro</th>
@@ -58,25 +61,12 @@ if(isset($_SESSION["nombre"])){//Si la variable esta definida
         </tr>
         </thead>
         <tbody>
-        <?php
-
-
-
-      
-            $sql="SELECT * FROM Pokemons";
-        
-
-            include('lista-pokemones.php');
-            //include('lista-pokemones-con-sesion.php');
-
-        ?>
+        <?php include('lista-pokemones.php'); ?>
         <tr>
         </tr>
         </tbody>
     </table>
-
-
-
+</main>
 
 <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
 
