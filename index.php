@@ -29,7 +29,7 @@ if(isset($_SESSION["nombre"])){//Si la variable esta definida
             </div>
 
             <div class="col-md-3">
-                <h1 class="text-center">POKEDEXS</h1>
+                <h1 class="text-center">POKEDEX</h1>
             </div>
 
             <div class="col-md-6 pt-2">
