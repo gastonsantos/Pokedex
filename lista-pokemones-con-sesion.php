@@ -27,7 +27,7 @@ foreach ( $pokemones as $pokemon){
 
 
                                           <div class ='my-2'>
-                                                <form action='' method='get'>
+                                                <form action='borrar.php' method='post'>
                                                 <input type='hidden' name='idBaja' value=".$pokemon['id'].">
                                                 <button type='submit' class='btn btn-danger ms-auto w-100' name='baja'>Eliminar</button>
                                                 </form>                  

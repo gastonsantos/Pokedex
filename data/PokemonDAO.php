@@ -43,11 +43,13 @@ class PokemonDAO {
         $query->bind_param("issssi", $id_manual,$nombre,$altura,$peso,$habilidad,$id);
 
         $query->execute();
-
-        $result = $query->get_result();
-
     }
 
-    public function delete($id) {}
+    public function delete($id) {
+        $query = $this->connection->prepare("DELETE FROM pokedex.pokemons WHERE id = ?");
+        $query->bind_param("i", $id);
+
+        $query->execute();
+    }
 
 }
