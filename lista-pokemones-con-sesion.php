@@ -18,14 +18,7 @@ foreach ( $pokemones as $pokemon){
                                    <td> <img src=" . $pokemon['imagen'] . " width=75 height=75 ></td>
                                    <td>
                                    <div class='row'>
-                                          
-                                          <div class =''>
-                                                <form action='' method='get'>
-                                                <input type='hidden' name='id' value=".$pokemon['id'].">
-                                                <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
-                                                </form>
-                                          </div>
-                                          <div class =''>
+                                          <div class ='my-2'>
                                                 <form action='modificar.php' method='get'>
                                                 <input type='hidden' name='id' value=".$pokemon['id'].">
                                                 <input class='btn btn-warning ms-auto w-100' type='submit' value='Modificar'>
@@ -33,7 +26,7 @@ foreach ( $pokemones as $pokemon){
                                           </div>
 
 
-                                          <div class =''>
+                                          <div class ='my-2'>
                                                 <form action='' method='get'>
                                                 <input type='hidden' name='idBaja' value=".$pokemon['id'].">
                                                 <button type='submit' class='btn btn-danger ms-auto w-100' name='baja'>Eliminar</button>
