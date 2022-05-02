@@ -17,9 +17,9 @@ class PokemonDAO {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getByName($name) {
-        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE nombre = ?");
-        $query->bind_param("s", $name);
+    public function getByNameOrId($search) {
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE id_manual ='".$search."' or nombre = '".$search."'");
+       
         $query->execute();
 
         $result = $query->get_result();

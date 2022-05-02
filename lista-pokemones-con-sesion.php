@@ -6,7 +6,7 @@ $pokemones = $dao->getAll();
 
 foreach ( $pokemones as $pokemon){
     echo   "<tr>
-                                <td class='text-center'>" . $pokemon['id'] . "</td>
+                                <td class='text-center'>" . $pokemon['id_manual'] . "</td>
                                 <td class='text-center'>" . $pokemon['nombre'] . "</td>
                                 <td class='text-center'>" . $pokemon['altura'] . "</td>
                                 <td class='text-center'>" . $pokemon['peso'] . "</td>

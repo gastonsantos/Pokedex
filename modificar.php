@@ -1,5 +1,7 @@
 <?php
     include_once "./data/PokemonDAO.php";
+    include_once "./utils/Navigation.php";
+
     $dao = new PokemonDAO();
 
     $respuesta = $dao->searchById($_GET["id"]);
@@ -14,6 +16,8 @@
         $habilidad = $_POST["actualizarHabilidad"];
 
         $dao->update($id,$id_manual,$nombre,$altura,$peso,$habilidad);
+
+        Navigation::redirectTo("index.php");
 
         }
 

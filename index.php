@@ -44,7 +44,7 @@ if (isset($_SESSION["nombre"])) {//Si la variable esta definida
 <main>
 
     <form class="container row flex-column flex-md-row my-2 mx-auto" method="post" action="detalle-pokemon.php">
-        <input class="col-12 col-md-8 my-2 my-md-0" placeholder="Ingrese el nombre del pokemon" name="nombre">
+        <input type="text" class="col-12 col-md-8 my-2 my-md-0" placeholder="Ingrese el nombre del pokemon o número" name="buscar">
         <button class="btn btn-danger rounded-0 col-12 col-md-4 my-2 my-md-0">Quien es este pokemon?</button>
     </form>
 

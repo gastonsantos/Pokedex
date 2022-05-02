@@ -2,16 +2,16 @@
 include_once "./data/PokemonDAO.php";
 include_once "./utils/Navigation.php";
 
-$isNamePresent = isset($_POST["nombre"]) || strlen($_POST["nombre"]) < 1;
+$isNamePresent = isset($_POST["buscar"]) || strlen($_POST["buscar"]) < 1;
 
 if (!$isNamePresent) Navigation::redirectTo("index.php");
 
 $dao = new PokemonDAO();
 
 // quitamos espacios y ponemos en mayusculas la primer letra
-$parsedName = trim(ucfirst($_POST["nombre"]));
+$parsedName = trim(ucfirst($_POST["buscar"]));
 
-$pokemon = $dao->getByName($parsedName);
+$pokemon = $dao->getByNameOrId($parsedName);
 
 if (!$pokemon) Navigation::redirectTo("index.php");
 ?>
@@ -22,7 +22,7 @@ if (!$pokemon) Navigation::redirectTo("index.php");
     <meta charset="utf-8">
     <title>POKEDEX</title>
     <link rel="stylesheet" type="text/css" href="recursos/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/main.css"
+    <link rel="stylesheet" type="text/css" href="recursos/css/main.css">
 
 </head>
 <body>
