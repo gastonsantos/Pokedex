@@ -21,7 +21,7 @@ foreach ( $pokemones as $pokemon){
 
                                           
                                           <div class =''>
-                                                <form action='detalle-pokemon.php' method='POST'>
+                                                <form action='detalle-pokemon-sin-buscar.php' method='POST'>
                                                 <input type='hidden' name='nombre' value=".$pokemon['nombre'].">
                                                 <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
                                                 </form>
