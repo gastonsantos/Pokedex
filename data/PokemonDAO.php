@@ -17,9 +17,9 @@ class PokemonDAO {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getByName($name) {
-        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE nombre = ?");
-        $query->bind_param("s", $name);
+    public function getByNameOrId($search) {
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE id_manual ='".$search."' or nombre = '".$search."'");
+       
         $query->execute();
 
         $result = $query->get_result();
@@ -27,13 +27,32 @@ class PokemonDAO {
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function update($id) {
-        
 
+    public function searchById($id){
+        $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons WHERE id = ?");
+        $query->bind_param("i", $id);
+        $query->execute();
 
+        $result = $query->get_result();
+
+        return $result->fetch_assoc();
     }
 
-    public function delete($id) {}
+    public function update($id,$id_manual,$nombre,$altura,$peso,$habilidad) {
+
+        $query = $this->connection->prepare("UPDATE pokedex.pokemons SET id_manual = ? ,nombre = ?, altura = ?, peso = ?, habilidad = ? WHERE id = ?");
+        $query->bind_param("issssi", $id_manual,$nombre,$altura,$peso,$habilidad,$id);
+
+
+        $query->execute();
+    }
+
+    public function delete($id) {
+        $query = $this->connection->prepare("DELETE FROM pokedex.pokemons WHERE id = ?");
+        $query->bind_param("i", $id);
+
+        $query->execute();
+    }
 
     public function agregar($id,$nombre,$altura,$peso,$habilidad,$tipo,$descripcion) {
        

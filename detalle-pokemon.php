@@ -2,19 +2,16 @@
 include_once "./data/PokemonDAO.php";
 include_once "./utils/Navigation.php";
 
-$isNamePresent = isset($_POST["nombre"]) || strlen($_POST["nombre"]) < 1;
+$isNamePresent = isset($_POST["buscar"]) || strlen($_POST["buscar"] ) < 1;
 
 if (!$isNamePresent) Navigation::redirectTo("index.php");
 
 $dao = new PokemonDAO();
 
 // quitamos espacios y ponemos en mayusculas la primer letra
-$parsedName = trim(ucfirst($_POST["nombre"]));
+$parsedName = trim(ucfirst($_POST["buscar"]));
 
-
-$pokemon = $dao->getByName($parsedName);
-
-
+$pokemon = $dao->getByNameOrId($parsedName);
 
 if (!$pokemon) Navigation::redirectTo("index.php");
 ?>
@@ -32,13 +29,13 @@ if (!$pokemon) Navigation::redirectTo("index.php");
 
 <header>
     <div class="container">
-        <div class="row py-3">
-            <div class="col">
+        <div class="row align-items-center py-3">
+            <div class="col-6 col-md">
                 <a href="index.php"><img src="recursos/img/logo/logo.png" width="50" height="50"></a>
             </div>
 
-            <div class="col-md-3">
-                <h1 class="text-center">POKEDEX</h1>
+            <div class="col-6 col-md-3">
+                <h1 class="text-center m-0">POKEDEX</h1>
             </div>
 
             <?php
@@ -46,10 +43,10 @@ if (!$pokemon) Navigation::redirectTo("index.php");
 
             if (!isset($_SESSION["nombre"])) {
                 echo '<div class="col-md-6 pt-2">
-                            <form class="d-flex mx-5 col-4" action="sesion.php" method="post">
-                                <input type="text" name="nombre" class="form-control mx-2 col-1" placeholder="usuario">
-                                <input type="password" name="password" class="form-control mx-2 col-1" placeholder="contraseña">
-                                <button type="submit" class="btn btn-primary col-6">Ingresar</button>
+                            <form class="d-flex flex-wrap flex-md-nowrap col col-md-4" action="sesion.php" method="post">
+                                <input type="text" name="nombre" class="form-control my-2 mx-md-2 col-1" placeholder="usuario">
+                                <input type="password" name="password" class="form-control my-2 mx-md-2 col-1" placeholder="contraseña">
+                                <button type="submit" class="btn btn-primary col my-2 ">Ingresar</button>
                             </form>
                     </div>';
             }

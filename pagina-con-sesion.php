@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["nombre"])){ //si no esta definida la variable usuario
+if (!isset($_SESSION["nombre"])) { //si no esta definida la variable usuario
     header("location:index.php");
     exit();
 }
@@ -26,19 +26,20 @@ if(!isset($_SESSION["nombre"])){ //si no esta definida la variable usuario
                 <a href="index.php"><img src="recursos/img/logo/logo.png" width="50" height="50"></a>
             </div>
 
-            <div class="col-md-3">
+            <div class="d-flex align-items-center justify-content-between col-md-4 my-3 my-md-0 ">
+                <h2 class="d-inline text-center h5">ADMIN: <?php echo $_SESSION["nombre"]; ?></h2>
                 <btn><a href="cerrar-sesion.php" class="btn btn-primary">Cerrar Sesion</a></btn>
-                <h3 class="text-center">ADMIN: <?php  echo $_SESSION["nombre"];   ?></h3>
             </div>
 </header>
 
-<form class="container d-flex my-2" method="post" action="detalle-pokemon.php">
-    <input class="col-8" placeholder="Ingrese el nombre del pokemon" name="nombre">
-    <button class="btn btn-danger col-4">Quien es este pokemon?</button>
+<form class="container row flex-column flex-md-row my-2 mx-auto" method="post" action="detalle-pokemon.php">
+    <input class="col-12 col-md-8 my-2 my-md-0" placeholder="Ingrese el nombre del pokemon o número" name="buscar">
+    <button class="btn btn-danger rounded-0 col-12 col-md-4 my-2 my-md-0">Quien es este pokemon?</button>
 </form>
 
 
 <table class="table container">
+
         <thead class="text-center">
         <tr>
             <th scope="col">Nro</th>
@@ -69,7 +70,8 @@ if(!isset($_SESSION["nombre"])){ //si no esta definida la variable usuario
     </div>
 
 
+
 <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
 
-    </body>
-    </html>
+</body>
+</html>
