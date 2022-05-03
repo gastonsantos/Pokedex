@@ -62,6 +62,11 @@ if(!isset($_SESSION["nombre"])){ //si no esta definida la variable usuario
     </table>
 
 
+    <div class="container pt-3">
+        <h3>
+            <a class="btn btn-primary w-100" href="agregar-pokemon.php">CARGAR UN POKEMON</a>
+        </h3>
+    </div>
 
 
 <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>

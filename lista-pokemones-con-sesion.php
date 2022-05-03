@@ -20,8 +20,8 @@ foreach ( $pokemones as $pokemon){
                                    <div class='row'>
                                           
                                           <div class =''>
-                                                <form action='' method='get'>
-                                                <input type='hidden' name='id' value=".$pokemon['id'].">
+                                                <form action='detalle-pokemon.php' method='POST'>
+                                                <input type='hidden' name='nombre' value=".$pokemon['nombre'].">
                                                 <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
                                                 </form>
                                           </div>
