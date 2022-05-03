@@ -9,6 +9,10 @@ class UsuarioDAO {
         $this->connection = DatabaseManager::getConnection();
     }
 
+    public function __destruct() {
+        $this->connection->close();
+    }
+
     public function login($nombre, $password) {
         $query = $this->connection->prepare("SELECT * FROM pokedex.usuario WHERE nombre = ? AND password = ?");
         $query->bind_param("ss", $nombre, $password);

@@ -8,6 +8,10 @@ class PokemonDAO {
         $this->connection = DatabaseManager::getConnection();
     }
 
+    public function __destruct() {
+        $this->connection->close();
+    }
+
     public function getAll() {
         $query = $this->connection->prepare("SELECT * FROM pokedex.pokemons");
         $query->execute();
