@@ -16,6 +16,16 @@ foreach ( $pokemones as $pokemon){
                                  echo"</td>";
                                  echo "<td>" . $pokemon['descripcion'] . "</td>
                                 <td> <img src=" . $pokemon['imagen'] . " width=75 height=75 ></td>
+                                <td>    
+                                <div class='row'>
+                                    <div class ='my-1'>
+                                      <form action='detalle-pokemon.php' method='POST'>
+                                      <input type='hidden' name='nombre' value=".$pokemon['nombre'].">
+                                      <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
+                                      </form>
+                                    </div>
+                                </div>
+                                </td>
                                    
              </tr>";
 }

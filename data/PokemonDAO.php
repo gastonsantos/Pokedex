@@ -28,7 +28,7 @@ class PokemonDAO {
 
         $result = $query->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC)[0];
+        return $result->fetch_assoc();
     }
 
 

@@ -2,18 +2,10 @@
 include_once "./data/PokemonDAO.php";
 include_once "./utils/Navigation.php";
 
-$isNamePresent = isset($_POST["buscar"]) || strlen($_POST["buscar"] ) < 1;
-
-if (!$isNamePresent) Navigation::redirectTo("index.php");
-
 $dao = new PokemonDAO();
 
-// quitamos espacios y ponemos en mayusculas la primer letra
-$parsedName = trim(ucfirst($_POST["buscar"]));
+$pokemon = $dao->getByNameOrId($_POST["nombre"]);
 
-$pokemon = $dao->getByNameOrId($parsedName);
-
-if (!$pokemon) Navigation::redirectTo("index.php");
 ?>
 
 <!DOCTYPE html>

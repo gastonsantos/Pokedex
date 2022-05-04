@@ -20,25 +20,21 @@ foreach ( $pokemones as $pokemon){
                                    <div class='row'>
 
                                           
-                                          <div class =''>
-                                                <form action='detalle-pokemon-sin-buscar.php' method='POST'>
+                                          <div class ='my-1'>
+                                                <form action='detalle-pokemon.php' method='POST'>
                                                 <input type='hidden' name='nombre' value=".$pokemon['nombre'].">
                                                 <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
                                                 </form>
                                           </div>
-                                          <div class =''>
-                                                
-
-      
+                                          <div class ='my-1'>
                                                 <form action='modificar.php' method='GET'>
                                                 <input type='hidden' name='id' value=".$pokemon['id'].">
                                                 <button class='btn btn-warning ms-auto w-100' type='submit' value='Modificar'> Modificar</button>
-                                                
                                                 </form>
                                           </div>
 
 
-                                          <div class ='my-2'>
+                                          <div class ='my-1'>
                                                 <form action='borrar.php' method='post'>
                                                 <input type='hidden' name='idBaja' value=".$pokemon['id'].">
                                                 <button type='submit' class='btn btn-danger ms-auto w-100' name='baja'>Eliminar</button>
