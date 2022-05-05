@@ -37,7 +37,7 @@ include_once "./utils/Navigation.php";
                 </div>
     </header>
 
-    <form class="container row flex-column flex-md-row my-2 mx-auto" method="post" action="detalle-pokemon.php">
+    <form class="container row flex-column flex-md-row my-2 mx-auto" method="post" action="pagina-con-sesion.php">
         <input class="col-12 col-md-8 my-2 my-md-0" placeholder="Ingrese el nombre del pokemon o número" name="buscar">
         <button class="btn btn-danger rounded-0 col-12 col-md-4 my-2 my-md-0">Quien es este pokemon?</button>
     </form>
@@ -79,6 +79,33 @@ include_once "./utils/Navigation.php";
                                     echo"</td>";
                                     echo "<td>" . $pokemon['descripcion'] . "</td>
                                    <td> <img src=" . $pokemon['imagen'] . " width=75 height=75 ></td>
+                                   <td>
+                                   <div class='row'>
+
+                                          
+                                          <div class ='my-1'>
+                                                <form action='detalle-pokemon.php' method='POST'>
+                                                <input type='hidden' name='nombre' value=".$pokemon['nombre'].">
+                                                <input class='btn btn-primary ms-auto w-100' type='submit' value='Detalles'>
+                                                </form>
+                                          </div>
+                                          <div class ='my-1'>
+                                                <form action='modificar.php' method='GET'>
+                                                <input type='hidden' name='id' value=".$pokemon['id'].">
+                                                <button class='btn btn-warning ms-auto w-100' type='submit' value='Modificar'> Modificar</button>
+                                                </form>
+                                          </div>
+
+
+                                          <div class ='my-1'>
+                                                <form action='borrar.php' method='post'>
+                                                <input type='hidden' name='idBaja' value=".$pokemon['id'].">
+                                                <button type='submit' class='btn btn-danger ms-auto w-100' name='baja'>Eliminar</button>
+                                                </form>                  
+                                          </div>
+
+                                    </div>
+                                   </td>
                                       
                 </tr>";
            }else{
