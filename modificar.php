@@ -1,4 +1,5 @@
 <?php
+session_start();
     include_once "./data/PokemonDAO.php";
     include_once "./utils/Navigation.php";
 
@@ -36,6 +37,11 @@
 </head>
 
 <body>
+
+<?php
+    include_once ("header-con-sesion.php")
+    ?>
+  
 
 
     <div class="d-flex justify-content-center">

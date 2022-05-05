@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "./data/PokemonDAO.php";
 include_once "./utils/Navigation.php";
 $dao = new PokemonDAO();
@@ -37,18 +37,10 @@ if(isset($_POST["subir"])){
 
 </head>
 
-<header>
-    <div class="container">
-        <div class="row py-3">
-            <div class="col">
-                <a href="index.php"><img src="recursos/img/logo/logo.png" width="50" height="50"></a>
-            </div>
-
-
-           
-        </div>
-    </div>
-</header>
+<?php
+    include_once ("header-con-sesion.php")
+    ?>
+  
 
 
   
