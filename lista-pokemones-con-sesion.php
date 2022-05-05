@@ -11,7 +11,7 @@ foreach ( $pokemones as $pokemon){
                                 <td class='text-center'>" . $pokemon['altura'] . "</td>
                                 <td class='text-center'>" . $pokemon['peso'] . "</td>
                                 <td class='text-center'>" . $pokemon['habilidad'] . "</td>
-                                <td class='text-center'><img src='".$pokemon['tipo']."' width='50' height='50'>";
+                                <td class='text-center'><img src='" . $pokemon['tipo']."' width='50' height='50'>";
                                
                                  echo"</td>";
                                  echo "<td>" . $pokemon['descripcion'] . "</td>

@@ -44,9 +44,6 @@ if(isset($_POST["subir"])){
                 <a href="index.php"><img src="recursos/img/logo/logo.png" width="50" height="50"></a>
             </div>
 
-            <div class="col-md-3">
-                <h1 class="text-center">AGREGAR POKEMON</h1>
-            </div>
 
            
         </div>
@@ -58,6 +55,10 @@ if(isset($_POST["subir"])){
     <div class="container">
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-auto bg-light p-5">
+                
+            <div class="col-md-3">
+                <h1 class="text-center">AGREGAR POKEMON</h1>
+            </div>
            
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="input-group p-2">
