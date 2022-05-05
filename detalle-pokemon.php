@@ -4,7 +4,7 @@ include_once "./utils/Navigation.php";
 
 $dao = new PokemonDAO();
 
-$pokemon = $dao->getByNameOrId($_POST["nombre"]);
+$pokemon = $dao->getByNameOrId($_POST["buscar"]);
 
 ?>
 
