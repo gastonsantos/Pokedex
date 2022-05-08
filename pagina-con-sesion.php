@@ -82,7 +82,7 @@ include_once "./utils/Navigation.php";
                                           </div>
                                           <div class ='my-1'>
                                                 <form action='modificar.php' method='GET'>
-                                                <input type='hidden' name='id' value=".$pokemon['id'].">
+                                                <input type='hidden' name='id' value=".$pokemon['id_manual'].">
                                                 <button class='btn btn-warning ms-auto w-100' type='submit' value='Modificar'> Modificar</button>
                                                 </form>
                                           </div>
@@ -90,7 +90,7 @@ include_once "./utils/Navigation.php";
 
                                           <div class ='my-1'>
                                                 <form action='borrar.php' method='post'>
-                                                <input type='hidden' name='idBaja' value=".$pokemon['id'].">
+                                                <input type='hidden' name='idBaja' value=".$pokemon['id_manual'].">
                                                 <button type='submit' class='btn btn-danger ms-auto w-100' name='baja'>Eliminar</button>
                                                 </form>                  
                                           </div>

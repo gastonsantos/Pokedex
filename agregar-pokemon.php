@@ -70,11 +70,14 @@ if(isset($_POST["subir"])){
                     </div>
                     <div class="input-group p-2">
                         <select class="form-control" name="tipo" placeholder="tipo">
-                            <option value="agua">agua</option>
-                            <option value="fuego">fuego</option>
-                            <option value="planta">planta</option>
-                            <option value="electrico">electrico</option>
-                            <option value="bicho">bicho</option>
+                            <option value=1>agua</option>
+                            <option value=2>bicho</option>
+                            <option value=3>electrico</option>
+                            <option value=4>fuego</option>
+                            <option value=5>planta</option>
+                            <option value=6>veneno</option>
+                            <option value=7>volador</option>
+                            
                          </select>   
                     </div>
                     <div class="input-group p-2">
