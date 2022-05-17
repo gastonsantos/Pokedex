@@ -1,30 +1,13 @@
 <?php
 session_start();
-include_once "./data/PokemonDAO.php";
-include_once "./utils/Navigation.php";
-$dao = new PokemonDAO();
 
-if(isset($_POST["subir"])){
-
-        $id = $_POST["id_manual"];
-        $nombre = $_POST["nombre"];
-        $altura = $_POST["altura"];
-        $peso = $_POST["peso"];
-        $habilidad = $_POST["habilidad"];
-        $tipo = $_POST["tipo"];
-        $descripcion = $_POST["descripcion"];
-       
-        $imgFile = $_FILES['imagen']['name'];
-        $tmp_dir = $_FILES['imagen']['tmp_name'];
-    
-        $upload_dir = 'recursos/img/pokemons/'; 
-      
-        move_uploaded_file($tmp_dir,$upload_dir.$nombre.".png");
-        $dao->agregar($id,$nombre,$altura,$peso,$habilidad,$tipo,$descripcion); 
-        header("location:pagina-con-sesion.php");
-
+if (!isset($_SESSION["nombre"])) { //si no esta definida la variable usuario
+    header("location:index.php");
+    exit();
 }
 
+include_once "./data/PokemonDAO.php";
+include_once "./utils/Navigation.php";
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +22,7 @@ if(isset($_POST["subir"])){
 
 <?php
     include_once ("header-con-sesion.php")
-    ?>
+?>
   
 
 
@@ -86,8 +69,61 @@ if(isset($_POST["subir"])){
                     <div class="input-group p-2">
                         <input class="form-control" type="file" id="imagen" name="imagen" placeholder="imagen">
                     </div>
-                    <input type="submit" name="subir"  class="btn btn-success w-100" value="Subir">
+
+                    <div id="error" class="text-center mt-2"></div>
+
+                    <input type="submit" name="subir" id="subir" class="btn btn-success w-100" value="Subir">
                 </form>
+                <?php
+                $dao = new PokemonDAO();
+
+                if(isset($_POST["subir"])){
+                
+                        $id = $_POST["id_manual"];
+                        $nombre = $_POST["nombre"];
+                        $altura = $_POST["altura"];
+                        $peso = $_POST["peso"];
+                        $habilidad = $_POST["habilidad"];
+                        $tipo = $_POST["tipo"];
+                        $descripcion = $_POST["descripcion"];
+                       
+                        $imgFile = $_FILES['imagen']['name'];
+                        $tmp_dir = $_FILES['imagen']['tmp_name'];
+                    
+                        $upload_dir = 'recursos/img/pokemons/'; 
+                
+                        if($id != '' &&  $nombre != '' && $altura != '' && $peso != '' && $habilidad != '' && $tipo != '' &&
+                        $descripcion != '' && $tmp_dir != '' ){
+                            move_uploaded_file($tmp_dir,$upload_dir.$nombre.".png");
+                            $dao->agregar($id,$nombre,$altura,$peso,$habilidad,$tipo,$descripcion); 
+                            header("location:pagina-con-sesion.php");
+                
+                    
+                        }else{
+                            echo '<script>
+                
+                            const error = document.querySelector("#error");
+                
+                
+                            error.classList.add("alert","alert-danger");
+                
+                            error.textContent="Todos los campos son obligatorios";
+                
+                
+                            setTimeout(() =>{
+                
+                                error.textContent=" ";
+                                error.classList.remove("alert","alert-danger");
+                
+                            },3000);
+                
+                            
+                            </script>';
+                        }
+                      
+                }
+
+                ?>
             </div>
         </div>
     </div>

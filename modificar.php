@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION["nombre"])) { //si no esta definida la variable usuario
+    header("location:index.php");
+    exit();
+}
     include_once "./data/PokemonDAO.php";
     include_once "./utils/Navigation.php";
 
@@ -14,9 +19,17 @@ session_start();
         $nombre = $_POST["actualizarNombre"];
         $altura = $_POST["actualizarAltura"];
         $peso = $_POST["actualizarPeso"];
+        $tipo = $_POST["actualizarTipo"];
         $habilidad = $_POST["actualizarHabilidad"];
 
-        $dao->update($id,$id_manual,$nombre,$altura,$peso,$habilidad);
+        $imgFile = $_FILES['actualizarImagen']['actualizarNombre'];
+        $tmp_dir = $_FILES['actualizarImagen']['tmp_actualizarNombre'];
+    
+        $upload_dir = 'recursos/img/pokemons/'; 
+      
+        move_uploaded_file($tmp_dir,$upload_dir.$nombre.".png");
+
+        $dao->update($id,$id_manual,$nombre,$altura,$peso,$tipo,$habilidad);
 
         Navigation::redirectTo("index.php");
 
@@ -74,10 +87,28 @@ session_start();
             </div>
 
             <div class="form-group">
+                <label for="actualizarTipo">Tipo:</label>
+                <select class="form-control" name="actualizarTipo">
+                    <option value=0 selected disabled>Seleccionar tipo</option>
+                    <option value=1>agua</option>
+                    <option value=2>bicho</option>
+                    <option value=3>electrico</option>
+                    <option value=4>fuego</option>
+                    <option value=5>planta</option>
+                    <option value=6>veneno</option>
+                    <option value=7>volador</option>
+                </select>   
+            </div>
+
+            <div class="form-group">
                 <label for="actualizarHabilidad">Habilidad:</label>
                 <input type="text" class="form-control"  name="actualizarHabilidad" 
                 value="<?php echo $respuesta["habilidad"]?>">
+            </div>
 
+            <div class="form-group mt-2">
+                <label for="actualizarImagen">Imagen:</label>
+                <input class="form-control" type="file" id="actualizarImagen" name="actualizarImagen" placeholder="imagen">
             </div>
 
             <input class="btn btn-primary mt-3 w-100" type="submit" name="actualizar" value="actualizar">

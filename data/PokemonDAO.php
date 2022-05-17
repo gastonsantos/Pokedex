@@ -45,11 +45,11 @@ class PokemonDAO {
         return $result->fetch_assoc();
     }
 
-    public function update($id,$id_manual,$nombre,$altura,$peso,$habilidad) {
+    public function update($id,$id_manual,$nombre,$altura,$peso,$tipo,$habilidad) {
 
-        $query = $this->connection->prepare("UPDATE pokedex.pokemons SET id_manual = ? ,nombre = ?, altura = ?, peso = ?, habilidad = ? WHERE id_manual = ?");
-        $query->bind_param("issssi", $id_manual,$nombre,$altura,$peso,$habilidad,$id);
-
+        $query = $this->connection->prepare("UPDATE pokedex.pokemons SET id_manual = ? ,nombre = ?, altura = ?, peso = ?, id_tipo = ?, habilidad = ?, imagen= ? WHERE id_manual = ?");
+        $imagen = "recursos/img/pokemons/".$nombre.".png";
+        $query->bind_param("isssissi", $id_manual,$nombre,$altura,$peso,$tipo,$habilidad,$imagen,$id);
 
         $query->execute();
     }
@@ -72,7 +72,7 @@ class PokemonDAO {
         $query->execute();
     
       
-        header("location:pagina-con-sesion.php");
+        //header("location:pagina-con-sesion.php");
 
         
 
