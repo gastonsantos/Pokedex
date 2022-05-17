@@ -33,6 +33,7 @@ include_once "./utils/Navigation.php";
         <button class="btn btn-danger rounded-0 col-12 col-md-4 my-2 my-md-0">Quien es este pokemon?</button>
     </form>
 
+    <div class="error-msj text-center w-50 mx-auto mt-5"></div>
 
     <table class="table container">
 
